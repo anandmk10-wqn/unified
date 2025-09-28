@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unifiedneeds - Support for Children with Special Needs</title>
+    <meta name="description" content="A Place of Hope offers a supportive community and valuable resources for parents and caregivers of children with special needs. You are not alone.">
+    <link rel="icon" type="image/png" href="static/images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="static/css/style.css">
+    <style>
+        .hero-title-color { color: rgb(18, 55, 134); }
+        #main-navigation a:hover { text-shadow: 0 0 8px rgba(255, 255, 255, 0.9); }
+        .logo-glow { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9)); }
+        .hero-subtitle-bg {
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hero-slider {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 10;
+        }
+        .slider-track {
+            display: flex; width: 400%; height: 100%; animation: slideAnimation 20s infinite ease-in-out;
+        }
+        .slide {
+            width: 25%; height: 100%; background-size: cover; background-position: center;
+        }
+        @keyframes slideAnimation {
+            0%, 20% { transform: translateX(0%); } 25%, 45% { transform: translateX(-25%); } 50%, 70% { transform: translateX(-50%); } 75%, 95% { transform: translateX(-75%); } 100% { transform: translateX(0%); }
+        }
+        #footer-wrapper {
+            background-image: linear-gradient(135deg, #a8e063 0%, #56ab2f 25%, #ff8c00 50%, #87ceeb 75%, #00008b 100%);
+            clip-path: polygon(0 0, 50% 15%, 100% 0, 100% 100%, 0 100%);
+        }
+        .copyright-strip {
+            position: sticky; bottom: 0; background-color: rgba(0, 0, 0, 0.2); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 40;
+        }
+        .footer-menu-button {
+            position: relative; padding: 1rem 1.5rem; color: white; font-weight: bold; text-decoration: none; transition: transform 0.2s; background-color: rgba(255, 255, 255, 0.15); border-top-left-radius: 10px; border-top-right-radius: 10px;
+        }
+        .footer-menu-button:hover {
+            transform: translateY(-2px); background-color: rgba(255, 255, 255, 0.25);
+        }
+    </style>
+</head>
+<body class="geometric-background text-gray-800 font-sans">
+
+    <header class="sticky top-0 z-50 shadow-md bg-white bg-opacity-70 backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-2 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-900 z-50">
+                <a href="index.html"><img src="static/images/unified-logo.png" alt="A Place of Hope Logo" class="h-20 -mb-8 logo-glow"></a>
+            </div>
+            <nav class="hidden md:flex items-center space-x-4" id="main-navigation">
+                <div id="main-nav-links" class="flex items-center space-x-4"></div>
+                <div class="relative" id="policies-menu-container">
+                    <a href="policies.html" class="parallelogram-btn">Our Policies</a>
+                    <a href="#" class="open-modal parallelogram-btn">Contact us</a>
+                </div>
+            </nav>
+            <div class="md:hidden z-50">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8 text-2xl">
+        <div id="mobile-nav-links" class="flex flex-col items-center space-y-8"></div>
+        <a href="policies.html" class="hover:text-teal-600">Our Policies</a>
+        <a href="#" class="open-modal hover:text-teal-600">Contact us</a>
+    </div>
+
+    <div>
+        <main class="hero-section relative" style="height: 70vh;">
+            <div class="hero-slider">
+                <div class="slider-track">
+                    <div class="slide" style="background-image: url('static/images/banner1.jpg');"></div>
+                    <div class="slide" style="background-image: url('static/images/banner5.jpg');"></div>
+                    <div class="slide" style="background-image: url('static/images/banner3.jpg');"></div>
+                    <div class="slide" style="background-image: url('static/images/banner4.jpg');"></div>
+                </div>
+            </div>
+            <div class="absolute inset-0 bg-black opacity-40 z-20"></div>
+            <div class="container mx-auto px-6 text-center relative z-30" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold leading-tight mb-4 text-white text-glow">
+                    <span class="hero-title-color" style="color: #ffffff;"></span>
+                    <span class="text-teal-700" style="color: #b2f5ea;"></span>
+                </h1>
+                <p id="hero-subtitle" class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto text-glow hero-subtitle-bg"></p>
+                <div class="flex justify-center gap-4">
+                    <a href="#" class="open-referral-modal bg-[rgb(157,234,94)] hover:bg-[rgb(130,200,70)] text-white font-bold py-3 px-8 rounded-full text-lg">Make a Referral</a>
+                    <a href="#" class="open-modal bg-slate-600 hover:bg-slate-700 text-white font-bold py-3 px-8 rounded-full text-lg">Contact Us</a>
+                </div>
+            </div>
+        </main>
+        
+        <section id="about-us-detailed" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-8 text-gray-900">About Us</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div><p class="text-lg text-gray-600 max-w-3xl mx-auto text-justify">Unified Needs is an Alternative Provision (AP) service in Cambridgeshire, created to support children and young people aged 6 – 18 who are finding it difficult to thrive in mainstream education. Our mission is to provide a safe, structured and nurturing environment where learners can re-engage, rebuild confidence and prepare for successful reintegration into school or their next stage of education. We combine academic learning, wellbeing support and outdoor opportunities to meet the whole needs of each child. Every placement is short term, flexible and personalised, giving learners the right support at the right time.</p><p class="text-lg text-gray-600 max-w-3xl mx-auto text-justify mt-4"> Unified Needs exists to make sure every child has the chance to learn, grow and thrive academically, socially and emotionally.</p></div>
+                    <div><p class="text-lg text-gray-600 max-w-3xl mx-auto text-justify">Unified Needs works in close partnership with schools, local authorities, SEND services and families. This ensures our provision enhances existing education pathways, while providing early intervention that prevents exclusion and opens positive futures. At the heart of our approach is a commitment to:</p>
+                        <ul class="list-disc list-inside text-lg text-gray-600 max-w-3xl mx-auto mt-4 space-y-2" style="text-align: left;">
+                            <li>Personalised learning that adapts to each child’s strengths and needs.</li>
+                            <li>Emotional safety and wellbeing as the foundation for progress.</li>
+                            <li>Strong safeguarding and compliance in line with local and national AP standards.</li>
+                            <li>Collaboration with families and professionals to ensure joined-up support.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-12 text-gray-900">Our Services</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
+                        <img src="static/images/tution1.jpg" alt="A child focused on a learning activity." class="w-full h-64 object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-2">Education & Learning</h2>
+                            <p class="text-gray-600 flex-grow mb-6 text-justify"><strong>Is homework a nightly battle? Our mentors are trained to move at your child’s pace, to find methods that work for them, and to celebrate their progress every step of the way.</strong></p>
+                            <div>
+                                <ul class="list-disc list-outside text-lg text-gray-600 max-w-3xl mx-auto mt-4 space-y-2 pl-5" style="text-align: left;">
+                                <li>Personalised learning that adapts to each child’s strengths and needs.</li>
+                                <li>Emotional safety and wellbeing as the foundation for progress.</li>
+                                <li>Strong safeguarding and compliance in line with local and national AP standards.</li>
+                                <li>Collaboration with families and professionals to ensure joined-up support.</li>
+                                </ul>
+                            </div>
+                            <br>
+                            <div class="mt-auto">
+                                <a href="#" class="open-modal inline-block bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">Enquire Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
+                        <img src="static/images/wellbeing1.jpg" alt="Hands holding a heart-shaped stone." class="w-full h-64 object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-2">Personal Development & Wellbeing</h2>
+                            <p class="text-gray-600 flex-grow mb-6 text-justify"><strong>Our wellbeing mentors provide a kind and patient ear, helping children build confidence and find positive ways to manage their emotions. It’s a gentle, supportive space for them to grow.</strong></p>
+                            <div>
+                                <ul class="list-disc list-outside text-lg text-gray-600 max-w-3xl mx-auto mt-4 space-y-2 pl-5" style="text-align: left;">
+                                <li>Wellbeing Support: Focus on confidence, resilience, and emotional regulation through mentoring and therapeutic activities.</li>
+                                <li>Outdoor & Community Learning: Farm, nature and community based activities that develop teamwork, life skills and self esteem</li>
+                                <li>Short Term Focus: Placements are designed as short term interventions to re engage learners, reduce exclusions and prepare for a successful return to school.</li>
+                                </ul>
+                            </div>
+                            <div class="mt-auto">
+                                <a href="#" class="open-modal inline-block bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">Find a Group</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
+                        <img src="static/images/outdoor1.jpg" alt="A child exploring a forest path." class="w-full h-64 object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-2">Outdoor Learning</h2>
+                            <p class="text-gray-700 flex-grow mb-6 text-justify">We invite your child into a world of hands-on adventure. These experiences build focus, calm busy minds, and foster a deep, lasting confidence.</p>
+                            <div class="mt-auto">
+                                <a href="#" class="open-modal inline-block bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">Explore Outdoors</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="missionvision" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-12 text-gray-900">Our Mission & Vision</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-8 text-left flex flex-col">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                        <p class="text-gray-700 flex-grow">We are driven by a passion to empower families. Through advocacy, education, and community-building, we strive to create a world where every child with special needs has the opportunity to thrive, and every parent feels supported and valued on their unique journey. At Unified Needs, we believe no child or family should ever feel alone or overlooked. We see you, we hear you, and we are here to walk alongside you. Our mission is to create a compassionate circle of support that embraces the complete educational, emotional, and social well-being of every child. We are a dedicated partner for families, schools, and local services, committed to building bridges where barriers exist. By fostering understanding and connection, we turn exclusion into engagement and pave the way for bright, positive futures. Our ultimate hope is to see every child thrive back in a mainstream school setting.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-8 text-left flex flex-col">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Our Vision</h3>
+                        <p class="text-gray-700 flex-grow">To unify the educational, emotional, and social needs of children and families under one inclusive, responsive, and compassionate support framework. Unified Needs aspires to become a trusted partner to local schools, services, and families helping to reduce exclusion, increase engagement, and promote long-term positive outcomes for children who are often overlooked by traditional systems.<br><br><strong>Our ultimate aim is reintegration:</strong> Wherever possible, we work towards reintroducing children into mainstream school settings without isolating the family or the student. We recognise that carers need a break too, and our service is designed to support the whole family while preparing the child for a successful return to school life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="resources" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-12 text-gray-900">Helpful Resources</h2>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center"><h3 class="text-2xl font-bold text-gray-900 mb-4">Educational Guides</h3><p class="text-gray-600 mb-4">In-depth articles and guides on a variety of topics relevant to your journey.</p><a href="#" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-full transition">Learn More</a></div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center"><h3 class="text-2xl font-bold text-gray-900 mb-4">Support Networks</h3><p class="text-gray-600 mb-4">Connect with other parents and find local or online support groups.</p><a href="#" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-full transition">Find a Group</a></div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center"><h3 class="text-2xl font-bold text-gray-900 mb-4">Expert Advice</h3><p class="text-gray-600 mb-4">Access webinars and Q&A sessions with specialists and professionals.</p><a href="#" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-full transition">Watch Now</a></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="whychooseus" class="relative h-screen overflow-hidden py-20">
+            <div class="container mx-auto px-6 relative z-20 text-center">
+                 <h2 class="text-4xl font-bold mb-12 text-gray-900">Why Choose Us</h2>
+            </div>
+            <div class="animation-container" style="height: 100%;">
+                <div class="scrolling-strip strip-1">
+                    <img src="./static/images/carer1.jpg" alt="A child smiling."><img src="./static/images/carer11.jpg" alt="A happy parent and child."><img src="./static/images/carer9.jpg" alt="A supportive community."><img src="./static/images/carer7.jpg" alt="A therapist working with a child."><img src="./static/images/carer5.jpg" alt="Abstract representing hope."><img src="./static/images/carer1.jpg" alt="A child smiling.">
+                </div>
+                <div class="scrolling-strip strip-2">
+                    <img src="./static/images/carer12.jpg" alt="A child learning."><img src="./static/images/carer10.jpg" alt="Hands held in support."><img src="./static/images/carer8.jpg" alt="A serene landscape."><img src="./static/images/carer6.jpg" alt="Children playing."><img src="./static/images/carer4.jpg" alt="A smiling face."><img src="./static/images/care3.jpg" alt="Abstract representing creativity.">
+                </div>
+            </div>
+            <div class="container mx-auto px-6 text-center" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                <ul class="list-disc list-inside text-lg md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto text-glow hero-subtitle-bg text-left">
+                    <li>Tailored learning to match each child’s individual needs.</li>
+                    <li>Strong safeguarding policies and trained staff.</li>
+                    <li>Flexible placements — no EHCP required to start.</li>
+                    <li>Balance of academic, emotional, and practical support.</li>
+                    <li>Focus on confidence, resilience, and independence.</li>
+                </ul>
+                <p class="text-lg md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto text-glow hero-subtitle-bg">At 'Unified Needs', We envision a future where families of children with special needs are fully integrated and supported within their communities. A future where access to resources is simple, stigmas are eliminated, and hope is a constant companion for every caregiver.</p>
+                <div class="flex justify-center gap-6">
+                    <a href="#" class="open-referral-modal bg-[rgb(157,234,94)] hover:bg-[rgb(130,200,70)] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400">Make a Referral</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-8 text-gray-900">Get in Touch</h2>
+                <div class="max-w-xl mx-auto text-left">
+                    <form id="contact-form" class="bg-white shadow-md rounded-lg p-8">
+                        <div class="mb-4"><label for="name" class="block text-gray-700 font-bold mb-2">Full Name</label><input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3" required></div>
+                        <div class="mb-4"><label for="email" class="block text-gray-700 font-bold mb-2">Email Address</label><input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3" required></div>
+                        <div class="mb-6"><label for="details" class="block text-gray-700 font-bold mb-2">Message</label><textarea id="details" name="details" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3" required></textarea></div>
+                        <div class="flex items-center justify-center"><button class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-full" type="submit">Send Message</button></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <div id="footer-wrapper" class="relative" style="margin-top: -120px; padding-top: 150px;">
+        <footer class="text-white">
+            <div class="container mx-auto px-6 text-center">
+                <nav class="flex justify-center items-end space-x-2">
+                    <div id="footer-nav-links" class="flex justify-center items-end space-x-2">
+                        <a href="#" class="footer-menu-button">Home</a><a href="#about-us-detailed" class="footer-menu-button">About</a><a href="#services" class="footer-menu-button">Services</a><a href="#contact" class="footer-menu-button">Contact</a>
+                    </div>
+                </nav>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start pt-12 pb-12">
+                    <div class="text-center">
+                        <h3 class="text-xl font-bold mb-2">Make a Referral</h3>
+                        <p class="mb-4 text-gray-300">Help a child get the support they need.</p>
+                        <a href="#" class="open-referral-modal inline-block bg-white text-blue-900 font-bold py-2 px-6 rounded-full transition hover:bg-gray-200">Refer Now</a>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-xl font-bold mb-2">Book an Appointment</h3>
+                        <p class="mb-4 text-gray-300">Schedule a consultation with our team.</p>
+                        <a href="#" class="open-modal inline-block bg-white text-green-900 font-bold py-2 px-6 rounded-full transition hover:bg-gray-200">Book Now</a>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-xl font-bold mb-2">Get In Touch</h3>
+                        <p class="text-gray-300"><strong>support@unifiedneeds.co.uk</strong></p><p class="text-gray-300"><strong>(+44) 1234 567890</strong></p><p><strong>12-14 Fitzroy ST CB1 1EW</strong></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="copyright-strip text-gray-200 text-sm text-center py-4">
+            &copy; 2025 Unified Needs - A Place of Hope. All rights reserved.
+        </div>
+    </div>
+    
+    <div id="contact-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-50 flex items-center justify-center px-4">
+        <div id="contact-modal-content" class="bg-white rounded-lg shadow-2xl p-8 w-11/12 md:w-3/4 lg:w-2/3 max-w-4xl transform transition-all opacity-0 -translate-y-4">
+            <div class="flex justify-between items-center mb-6"><h2 class="text-3xl font-bold text-gray-800">Contact Us</h2><button id="close-modal-btn" class="text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button></div>
+            <div id="success-message" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"><strong>Thank you!</strong> Your message has been sent successfully.</div>
+            <form id="contact-modal-form" class="space-y-6">
+                <div><label for="enquiry-direction" class="block text-sm font-medium text-gray-700">Help us direct your enquiry</label><select id="enquiry-direction" name="enquiryDirection" class="mt-1 block w-full p-2 border"><option>General Enquiry</option><option>Make a Referral</option></select></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div><label for="first-name" class="block text-sm font-medium text-gray-700">First Name</label><input type="text" id="first-name" name="firstName" class="mt-1 block w-full p-2 border"></div>
+                    <div><label for="last-name" class="block text-sm font-medium text-gray-700">Last Name</label><input type="text" id="last-name" name="lastName" class="mt-1 block w-full p-2 border"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                     <div><label for="modal-email" class="block text-sm font-medium text-gray-700">Email ID <span class="text-red-500">*</span></label><input type="email" id="modal-email" name="email" class="mt-1 block w-full p-2 border" required></div>
+                    <div><label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label><input type="tel" id="phone" name="phone" class="mt-1 block w-full p-2 border"></div>
+                </div>
+                <div><label for="enquiry-type" class="block text-sm font-medium text-gray-700">Enquiry Type</label><select id="enquiry-type" name="enquiryType" class="mt-1 block w-full p-2 border"><option>General</option><option>Safeguarding</option><option>Recruitment</option></select></div>
+                <div><label for="modal-details" class="block text-sm font-medium text-gray-700">Details</label><textarea id="modal-details" name="details" rows="6" class="mt-1 block w-full p-2 border"></textarea></div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Would you like to opt-in to our quarterly newsletter?</label>
+                    <div class="mt-2 flex items-center space-x-6"><label class="inline-flex items-center"><input type="radio" name="newsletter" value="Yes" class="form-radio"> <span class="ml-2">Yes</span></label><label class="inline-flex items-center"><input type="radio" name="newsletter" value="No" class="form-radio" checked> <span class="ml-2">No</span></label></div>
+                </div>
+                <div class="text-right"><button type="submit" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-md">Submit Enquiry</button></div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="referral-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-50 flex items-center justify-center px-4">
+        <div id="referral-modal-content" class="bg-white rounded-lg shadow-2xl p-8 w-11/12 md:w-3/4 lg:w-2/3 max-w-4xl transform transition-all opacity-0 -translate-y-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-gray-800">Make a Referral</h2>
+                <button id="close-referral-modal-btn" class="text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button>
+            </div>
+            <div id="referral-success-message" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"><strong>Thank you!</strong> Your referral has been submitted.</div>
+            <form id="referral-modal-form" class="space-y-4">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-700 border-b pb-2 mb-3">Your Details (Referrer)</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div><label for="modal-ref-name" class="block text-sm font-medium text-gray-700">Full Name</label><input type="text" name="referrerName" class="mt-1 block w-full p-2 border rounded" required></div>
+                        <div><label for="modal-ref-email" class="block text-sm font-medium text-gray-700">Email Address</label><input type="email" name="referrerEmail" class="mt-1 block w-full p-2 border rounded" required></div>
+                        <div><label for="modal-ref-phone" class="block text-sm font-medium text-gray-700">Phone Number</label><input type="tel" name="referrerPhone" class="mt-1 block w-full p-2 border rounded"></div>
+                        <div><label for="modal-ref-rel" class="block text-sm font-medium text-gray-700">Relationship to Family</label><input type="text" name="referrerRelationship" class="mt-1 block w-full p-2 border rounded" placeholder="e.g., Parent, Teacher" required></div>
+                    </div>
+                </div>
+                 <div>
+                    <h3 class="text-lg font-semibold text-gray-700 border-b pb-2 mb-3">Referred Child's Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div><label for="modal-child-name" class="block text-sm font-medium text-gray-700">Child's Full Name</label><input type="text" name="childName" class="mt-1 block w-full p-2 border rounded" required></div>
+                        <div><label for="modal-child-age" class="block text-sm font-medium text-gray-700">Child's Age</label><input type="number" name="childAge" class="mt-1 block w-full p-2 border rounded" required></div>
+                    </div>
+                </div>
+                <div>
+                    <label for="modal-ref-reason" class="block text-sm font-medium text-gray-700">Reason for Referral</label>
+                    <textarea name="referralReason" rows="4" class="mt-1 block w-full p-2 border rounded" placeholder="Please provide a brief summary..." required></textarea>
+                </div>
+                <div class="flex items-start">
+                    <div class="flex items-center h-5"><input id="modal-consent" name="hasConsent" type="checkbox" class="h-4 w-4 text-teal-600 border-gray-300 rounded" required></div>
+                    <div class="ml-3 text-sm"><label for="modal-consent" class="font-medium text-gray-700">I confirm that I have obtained consent from the parent/guardian to make this referral.</label></div>
+                </div>
+                <div class="text-right pt-2"><button type="submit" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-md">Submit Referral</button></div>
+            </form>
+        </div>
+    </div>
+    
+    <script type="module" src="app.js"></script>
+    <script type="module" src="contact-modal.js"></script>
+    <script type="module" src="referral-modal.js"></script>
+</body>
+</html>

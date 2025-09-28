@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin Dashboard - Unified Needs</title>
+    <link rel="icon" type="image/png" href="static/images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-gray-800">Admin Dashboard</h1>
+            <button id="logout-btn" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-400">Log Out</button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        <div class="border-b border-gray-200">
+            <nav id="admin-tabs" class="-mb-px flex space-x-8" aria-label="Tabs">
+                <a href="#" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="content">Home Page Content</a>
+                <a href="#" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="inquiries">Inquiries</a>
+                <a href="#" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="referrals">Referrals</a>
+                <a href="#" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="policies">Policies</a>
+                <a href="#" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="navigation">Navigation</a>
+            </nav>
+        </div>
+
+        <div class="mt-8">
+            <div id="tab-content" class="tab-panel">
+                <section>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-2xl font-bold text-gray-800">Home Page Blocks</h2>
+                        <div id="add-block-container" class="relative">
+                            <button id="add-block-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md inline-flex items-center">
+                                <span>+ Add Block</span>
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div id="add-block-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-20">
+                                </div>
+                        </div>
+                    </div>
+                    <div id="blocks-container" class="space-y-4">
+                        <p id="blocks-loading-message">Loading content blocks...</p>
+                    </div>
+                </section>
+            </div>
+
+            <div id="tab-inquiries" class="tab-panel hidden">
+                <section>
+                    <div class="bg-white shadow-md rounded-lg p-6 overflow-x-auto">
+                        <p id="inquiries-loading-message">Loading inquiries...</p>
+                        <div id="inquiries-container"></div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="tab-referrals" class="tab-panel hidden">
+                <section>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Referrals</h2>
+                    <div class="bg-white shadow-md rounded-lg p-6 overflow-x-auto">
+                        <div id="referrals-container">
+                            <p>Loading referrals...</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="tab-policies" class="tab-panel hidden">
+                <section>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-2xl font-bold text-gray-800">Your Policies</h2>
+                        <button id="add-policy-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">+ Add New Policy</button>
+                    </div>
+                    <div class="bg-white shadow-md rounded-lg p-6 overflow-x-auto">
+                        <p id="policies-loading-message">Loading policies...</p>
+                        <div id="policies-table-container"></div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="tab-navigation" class="tab-panel hidden">
+                <section>
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800">Manage Main Navigation</h2>
+                    <form id="nav-item-form" class="bg-white shadow-md rounded-lg p-6 mb-8 space-y-4">
+                         <h3 class="text-xl font-bold" id="nav-form-title">Add New Menu Item</h3>
+                         <input type="hidden" id="nav-item-id">
+                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                             <div>
+                                 <label for="nav-item-text" class="block text-sm font-medium text-gray-700">Link Text</label>
+                                 <input type="text" id="nav-item-text" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., About Us" required>
+                             </div>
+                             <div>
+                                 <label for="nav-item-url" class="block text-sm font-medium text-gray-700">URL</label>
+                                 <input type="text" id="nav-item-url" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., index.html#about" required>
+                             </div>
+                             <div>
+                                 <label for="nav-item-order" class="block text-sm font-medium text-gray-700">Order</label>
+                                 <input type="number" id="nav-item-order" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., 1" required>
+                             </div>
+                         </div>
+                         <div class="flex justify-end space-x-2">
+                              <button id="cancel-nav-edit-btn" type="button" class="hidden bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md">Cancel</button>
+                              <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">Save Menu Item</button>
+                         </div>
+                    </form>
+                    <div class="bg-white shadow-md rounded-lg p-6 overflow-x-auto">
+                         <p id="nav-items-loading-message">Loading menu items...</p>
+                        <div id="nav-items-table-container"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="edit-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 overflow-y-auto h-full w-full z-50">
+        <div class="relative top-10 mx-auto p-5 border w-full max-w-4xl shadow-lg rounded-md bg-white">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4" id="modal-title">Edit Content</h3>
+            <form id="modal-form">
+                <div id="modal-form-fields" class="space-y-4 mb-6">
+                    </div>
+                <div class="flex justify-end space-x-2">
+                    <button id="modal-cancel-btn" type="button" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-teal-500 text-white rounded-md hover:bg-teal-700">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script type="module" src="admin.js"></script>
+</body>
+</html>

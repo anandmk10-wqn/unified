@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Policies - Unified Needs</title>
+    <meta name="description" content="Read the policies of Unified Needs, a supportive community for parents and caregivers of children with special needs.">
+    <link rel="icon" type="image/png" href="static/images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="static/css/style.css">
+    <style>
+        /* Styles brought over from index.html for consistency */
+        .logo-glow { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7)); }
+        .hero-subtitle-bg {
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        /* Custom styles for the policy content area for better readability */
+        #policy-content {
+            border-top: 1px solid #e2e8f0; /* a light top border */
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .prose {
+             line-height: 1.75;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            margin-bottom: 1rem;
+        }
+        .prose ul, .prose ol {
+            padding-left: 1.5rem;
+        }
+        .prose table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .prose th, .prose td {
+            border: 1px solid #cbd5e0;
+            padding: 0.5rem 1rem;
+        }
+    </style>
+</head>
+<body class="geometric-background text-gray-800 font-sans">
+
+    <!-- Header (Consistent with index.html) -->
+    <header class="sticky top-0 z-50 shadow-md bg-white bg-opacity-70 backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-2 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-900 z-50">
+                <a href="index.html">
+                    <img src="static/images/unified-logo.png" alt="Unified Needs Logo" class="h-20 -mb-8 logo-glow">
+                </a>
+            </div>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-4" id="main-navigation">
+                <div id="main-nav-links" class="flex items-center space-x-4"></div>
+                <div class="relative" id="policies-menu-container">
+                    <a href="policies.html" class="parallelogram-btn">Our Policies</a>
+                    <div id="mega-menu" class="absolute hidden bg-white shadow-lg rounded-md mt-2 w-72 z-10">
+                        <div class="p-4" id="policies-links-container"></div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden z-50">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8 text-2xl">
+        <a href="index.html" class="hover:text-teal-600">Home</a>
+        <div id="mobile-nav-links" class="flex flex-col items-center space-y-8"></div>
+        <a href="policies.html" class="hover:text-teal-600">Our Policies</a>
+        <a href="#" id="mobile-contact-btn" class="mt-8 bg-slate-600 text-white font-bold py-3 px-8 rounded-full">Contact Us</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- New Policy Index Section -->
+        <section id="policy-index-section" class="mb-12">
+            <div class="hero-subtitle-bg text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 text-glow">Our Policies</h1>
+                <p class="mt-4 text-lg text-gray-700">Select a policy from the index below to view its full content.</p>
+                <div id="policy-index-container" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-left">
+                    <!-- Policy links will be dynamically injected here -->
+                    <p class="text-gray-500 col-span-full">Loading policy index...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Policy Content Display Section (Initially Hidden) -->
+        <section id="policy-display-container" class="hidden">
+            <div class="bg-white shadow-lg rounded-lg p-8 lg:p-12">
+                 <button id="back-to-index-btn" class="mb-6 text-blue-600 hover:underline font-semibold">&larr; Back to Policy Index</button>
+                <h2 id="policy-title" class="text-3xl md:text-4xl font-extrabold mb-6 text-gray-900"></h2>
+                <div id="policy-content" class="prose max-w-none text-gray-700"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Consistent with index.html) -->
+    <footer class="gradient-footer text-white py-8">
+        <div class="container mx-auto px-6 text-center"><p>Connecting families with the resources they need to thrive.</p></div>
+    </footer>
+    <div class="sticky-footer bg-gray-800 text-gray-300 text-sm text-center py-2">&copy; 2025 A Place of Hope. All rights reserved.</div>
+
+    <!-- Scripts -->
+    <script type="module" src="policy-viewer.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

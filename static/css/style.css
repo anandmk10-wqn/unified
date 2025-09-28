@@ -1,0 +1,195 @@
+/* --- V8 STYLES - ADAPTED FOR "A PLACE OF HOPE" --- */
+
+body {
+    background-color: #ffffff;
+    position: relative;
+    padding-bottom: 3rem; /* Space for the sticky footer */
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    /* Replaced the red and black geometric pattern with a soft teal one */
+    background-image:
+        linear-gradient(30deg, rgba(56, 178, 172, 0.5) 12%, transparent 12.5%, transparent 87%, rgba(56, 178, 172, 0.5) 87.5%, rgba(56, 178, 172, 0.5)),
+        linear-gradient(150deg, rgba(56, 178, 172, 0.5) 12%, transparent 12.5%, transparent 87%, rgba(56, 178, 172, 0.5) 87.5%, rgba(56, 178, 172, 0.5)),
+        linear-gradient(30deg, rgba(56, 178, 172, 0.5) 12%, transparent 12.5%, transparent 87%, rgba(56, 178, 172, 0.5) 87.5%, rgba(56, 178, 172, 0.5)),
+        linear-gradient(150deg, rgba(56, 178, 172, 0.5) 12%, transparent 12.5%, transparent 87%, rgba(56, 178, 172, 0.5) 87.5%, rgba(56, 178, 172, 0.5)),
+        linear-gradient(60deg, rgba(72, 187, 120, 0.5) 25%, transparent 25.5%, transparent 75%, rgba(72, 187, 120, 0.5) 75%, rgba(72, 187, 120, 0.5)),
+        linear-gradient(60deg, rgba(72, 187, 120, 0.5) 25%, transparent 25.5%, transparent 75%, rgba(72, 187, 120, 0.5) 75%, rgba(72, 187, 120, 0.5));
+    background-size: 60px 105px;
+    background-position: 0 0, 0 0, 30px 52.5px, 30px 52.5px, 0 0, 30px 52.5px;
+    opacity: 0.1;
+}
+/* ===== Custom Glow Effects ===== */
+
+
+/* --- BUTTON, TEXT, and AVATAR STYLES --- */
+.parallelogram-btn {
+    position: relative;
+    padding: 0.5rem 1.5rem;
+    background-color: #319795; /* teal-600 */
+    color: white;
+    font-weight: bold;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: clip-path 0.3s ease, background-color 0.3s ease;
+}
+.parallelogram-btn:hover {
+    background-color: #319795; /* teal-600 */
+    clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
+}
+.text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+}
+.hexagon-avatar {
+    width: 128px;
+    height: 148px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+}
+.hexagon-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* --- FOOTER STYLES --- */
+.gradient-footer {
+    width: 100%;
+    /* Replaced red gradient with a calming blue-gray gradient */
+    background-image: linear-gradient(to top, #4A5568, #2D3748);
+    color: #F7FAFC; /* gray-100 */
+    padding: 2rem;
+    text-align: center;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+.sticky-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2D3748; /* gray-800 */
+    color: #A0AEC0; /* gray-500 */
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    z-index: 50;
+}
+
+/* --- VERTICAL ANIMATION (HERO) --- */
+.animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: inset 0 0 40px 20px rgba(0,0,0,0.5);
+}
+.scrolling-strip {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    height: 200%;
+    will-change: transform;
+}
+.strip-1 { left: 10%; animation: scroll-up 40s linear infinite; }
+.strip-2 { right: 10%; animation: scroll-down 40s linear infinite; }
+.scrolling-strip img {
+    width: 200px;
+    height: auto;
+    margin: 15px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    opacity: 0.8;
+}
+@keyframes scroll-up { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+@keyframes scroll-down { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
+
+
+/* --- HORIZONTAL GALLERY ANIMATION (This section is no longer in the HTML but keeping styles for potential future use) --- */
+.animation-container-horizontal {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+}
+.scrolling-strip-horizontal {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 200%;
+    height: 220px;
+    will-change: transform;
+    animation: scroll-left 60s linear infinite;
+}
+.strip-1-horizontal { top: 0; }
+.strip-2-horizontal { top: 225px; animation-name: scroll-right; }
+.scrolling-strip-horizontal img {
+    height: 200px;
+    width: auto;
+    margin: 10px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+.scrolling-strip-horizontal img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    position: relative;
+}
+@keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes scroll-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+/* --- MEGA MENU STYLES --- */
+#policies-menu-container:hover #mega-menu {
+    display: block;
+}
+
+
+/* --- GENERAL SECTION STYLES --- */
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+section {
+    position: relative;
+    z-index: 2;
+}
+
+/* White halo glow */
+.text-glow-wwhite {
+  text-shadow: 
+    0 0 4px rgba(255, 255, 255, 0.7),
+    0 0 8px rgba(255, 255, 255, 0.5),
+    0 0 16px rgba(255, 255, 255, 0.4);
+}
+
+/* Teal glow (brand styling) */
+.text-glow-wteal {
+  text-shadow: 
+    0 0 6px rgba(20, 184, 166, 0.8),
+    0 0 12px rgba(20, 184, 166, 0.6),
+    0 0 24px rgba(20, 184, 166, 0.5);
+}
+footer, 
+footer *:not(a.bg-white):not(button) {
+  /* Apply teal glow to all footer text except white buttons/links */
+  text-shadow: 
+    0 0 6px rgba(20, 184, 166, 0.8),
+    0 0 12px rgba(20, 184, 166, 0.6),
+    0 0 24px rgba(20, 184, 166, 0.5);
+}

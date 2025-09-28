@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Place of Hope - Support for Children with Special Needs</title>
+    <meta name="description" content="A Place of Hope offers a supportive community and valuable resources for parents and caregivers of children with special needs. You are not alone.">
+    <link rel="icon" type="image/png" href="static/images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="static/css/style.css">
+    <style>
+        .hero-title-color { color: rgb(18, 55, 134); }
+        #main-navigation a:hover { text-shadow: 0 0 8px rgba(255, 255, 255, 0.9); }
+        .logo-glow { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7)); }
+        .hero-subtitle-bg {
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="geometric-background text-gray-800 font-sans">
+
+    <!-- Header - UPDATED FOR MOBILE RESPONSIVENESS -->
+    <header class="sticky top-0 z-50 shadow-md bg-white bg-opacity-70 backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-2 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-900 z-50">
+                <a href="index.html">
+                    <img src="static/images/unified-logo.png" alt="A Place of Hope Logo" class="h-20 -mb-8 logo-glow">
+                </a>
+            </div>
+
+            <!-- Desktop Navigation (Hidden on mobile) -->
+            <nav class="hidden md:flex items-center space-x-4" id="main-navigation">
+                <div id="main-nav-links" class="flex items-center space-x-4">
+                    <!-- Desktop links are injected here by app.js -->
+                </div>
+                <div class="relative" id="policies-menu-container">
+                    <a href="policies.html" class="parallelogram-btn focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400">Our Policies</a>
+                    <div id="mega-menu" class="absolute hidden bg-white shadow-lg rounded-md mt-2 w-72 z-10">
+                        <div class="p-4" id="policies-links-container">
+                            <p class="text-gray-500 text-sm">Loading policies...</p>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Mobile Menu Button (Hamburger Icon) -->
+            <div class="md:hidden z-50">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay (Hidden by default) -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8 text-2xl">
+        <!-- Mobile links will be injected here by app.js -->
+        <a href="index.html" class="hover:text-teal-600">Home</a>
+        <div id="mobile-nav-links" class="flex flex-col items-center space-y-8"></div>
+        <a href="policies.html" class="hover:text-teal-600">Our Policies</a>
+        <a href="#" id="mobile-contact-btn" class="mt-8 bg-slate-600 text-white font-bold py-3 px-8 rounded-full">Contact Us</a>
+    </div>
+
+
+    <!-- Main Content Wrapper (No changes below this point) -->
+    <div>
+        <!-- Hero Section -->
+        <main class="hero-section" style="height: 80vh;">
+            <!-- Background imagery -->
+            <div class="animation-container">
+                <div class="scrolling-strip strip-1">
+                    <img src="./static/images/carer1.jpg" alt="A child with special needs smiling and playing.">
+                    <img src="./static/images/carer11.jpg" alt="A parent and child sharing a happy moment.">
+                    <img src="./static/images/carer9.jpg" alt="A supportive community of parents talking together.">
+                    <img src="./static/images/carer7.jpg" alt="A therapist working with a child in a positive environment.">
+                    <img src="./static/images/carer5.jpg" alt="A colorful abstract image representing hope and creativity.">
+                    <img src="./static/images/carer1.jpg" alt="A colorful abstract image representing hope and creativity.">
+                </div>
+                <div class="scrolling-strip strip-2">
+                    <img src="./static/images/carer12.jpg" alt="A child engaged in a learning activity.">
+                    <img src="./static/images/carer10.jpg" alt="Two hands held together in a gesture of support.">
+                    <img src="./static/images/carer8.jpg" alt="A serene landscape symbolizing peace and journey.">
+                    <img src="./static/images/carer6.jpg" alt="A group of diverse children playing together happily.">
+                    <img src="./static/images/carer4.jpg" alt="A close-up of a smiling face, representing joy.">
+                    <img src="./static/images/care3.jpg" alt="A colorful abstract image representing hope and creativity.">
+                </div>
+            </div>
+
+            <!-- Foreground Content -->
+            <div class="container mx-auto px-6 text-center" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
+                <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold leading-tight mb-4 text-gray-900 text-glow">
+                    <span class="hero-title-color">You Are Not Alone.</span>
+                    <span class="text-teal-700">Find Strength and Support Here.</span>
+                </h1>
+                <p id="hero-subtitle" class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto text-glow hero-subtitle-bg">
+                    At 'Unified Needs', We envision a future where families of children with special needs are fully integrated and supported within their communities. A future where access to resources is simple, stigmas are eliminated, and hope is a constant companion for every caregiver.
+                </p>
+                <div class="flex justify-center gap-4">
+                    <a href="#resources" class="bg-[rgb(157,234,94)] hover:bg-[rgb(130,200,70)] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400">Find Resources</a>
+                    <a href="#" id="open-contact-modal-btn" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-400">Contact Us</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- "Our Mission" Section -->
+        <section id="mission1" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold mb-8 text-gray-900 text-center">Our Mission</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <!-- Left side connected to CMS -->
+                    <div>
+                        <p id="our-mission-text" class="text-lg text-gray-600"></p>
+                    </div>
+                    <!-- Right side for additional static text -->
+                    <div>
+                        <p class="text-lg text-gray-600">
+                            We are driven by a passion to empower families. Through advocacy, education, and community-building, we strive to create a world where every child with special needs has the opportunity to thrive, and every parent feels supported and valued on their unique journey.
+                            At Unified Needs, we believe no child or family should ever feel alone or overlooked. We see you, we hear you, and we are here to walk alongside you.
+                            Our mission is to create a compassionate circle of support that embraces the complete educational, emotional, and social well-being of every child. We are a dedicated partner for families, schools, and local services, committed to building bridges where barriers exist. By fostering understanding and connection, we turn exclusion into engagement and pave the way for bright, positive futures.
+                            Our ultimate hope is to see every child thrive back in a mainstream school setting.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- "Our Vision" Section -->
+        <section id="vision1" class="py-20 bg-gray-100">
+             <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold mb-8 text-gray-900 text-center">Our Vision</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    To unify the educational, emotional, and social needs of children and families under one inclusive, responsive, and compassionate support framework. Unified Needs aspires to become a trusted partner to local schools, services, and families helping to reduce exclusion, increase engagement, and promote long-term positive outcomes for children who are often overlooked by traditional systems.
+                    </p>
+                </div>
+                <div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    <strong>Our ultimate aim is reintegration:</strong> Wherever possible, we work towards reintroducing children into mainstream school settings without isolating the family or the student. We recognise that carers need a break too, and our service is designed to support the whole family while preparing the child for a successful return to school life.
+                    </p>
+                </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- "About Us" Section -->
+        <section id="about-us-detailed" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-8 text-gray-900">About Us</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Founded by parents who have walked this path, 'A Place of Hope' was born from a desire to create the resource we wished we had. Our team is composed of dedicated caregivers, professionals, and volunteers committed to providing a beacon of light and a network of strength for families everywhere. Unified Needs was born from lived experience. The director is a parent of four neurodivergent children and has firsthand knowledge of the challenges of navigating SEN and AP systems. This insight underpins our approach: grounded in empathy, realism, and action.
+                    We provide a flexible and community-based model that bridges the gap between education, family support, and wellbeing placing children and families at the centre of everything we do.
+                    Unified Needs provides flexible, tailored support through a range of services that prioritise emotional safety, academic progress, and family involvement. We are ready to collaborate with local authority teams, education settings, SEND services, and Early Help to ensure our model enhances not replaces existing provision.
+                    </p>
+                    </div>
+                    <div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Unified Needs is a newly established alternative provision (AP) service in Cambridgeshire, created to address the needs of children and young people who are unable to thrive within traditional mainstream education. Our service is designed to offer personalised academic, emotional, and behavioural support for pupils at risk of exclusion, those with special educational needs (SEN), or those experiencing other barriers to learning and engagement. What makes us different: Unlike many other services, students can be referred to Unified Needs without requiring an EHCP, IEP, ILP, or completion of the APDR cycle. This unique flexibility allows schools and families to access immediate, high-quality support without waiting for lengthy assessments or paperwork.
+                    At the same time, every student’s plan is professionally guided. We use the expertise of occupational therapists, psychologists, qualified teachers, and a head teacher to shape individual learning and behaviour plans. This ensures children benefit from a multi- disciplinary team approach without the delays normally associated with accessing specialist advice.
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- "Resources" Section -->
+        <section id="resources" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-12 text-gray-900">Helpful Resources</h2>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center"><h3 class="text-2xl font-bold text-gray-900 mb-4">Educational Guides</h3><p class="text-gray-600 mb-4">In-depth articles and guides on a variety of topics relevant to your journey.</p><a href="#" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Learn More<span class="sr-only"> about Educational Guides</span></a></div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center"><h3 class="text-2xl font-bold text-gray-900 mb-4">Support Networks</h3><p class="text-gray-600 mb-4">Connect with other parents and find local or online support groups.</p><a href="#" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Find a Group<span class="sr-only"> in our Support Networks</span></a></div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center"><h3 class="text-2xl font-bold text-gray-900 mb-4">Expert Advice</h3><p class="text-gray-600 mb-4">Access webinars and Q&A sessions with specialists and professionals.</p><a href="#" class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Watch Now<span class="sr-only"> to get Expert Advice</span></a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- "Get in Touch" Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-8 text-gray-900">Get in Touch</h2>
+                <div class="max-w-xl mx-auto text-left">
+                    <form id="contact-form" class="bg-white shadow-md rounded-lg p-8">
+                        <div class="mb-4"><label for="name" class="block text-gray-700 font-bold mb-2">Full Name</label><input type="text" id="name" name="name" class="shadow w-full py-2 px-3" required></div>
+                        <div class="mb-4"><label for="email" class="block text-gray-700 font-bold mb-2">Email Address</label><input type="email" id="email" name="email" class="shadow w-full py-2 px-3" required></div>
+                        <div class="mb-6"><label for="details" class="block text-gray-700 font-bold mb-2">Message</label><textarea id="details" name="details" rows="4" class="shadow w-full py-2 px-3" required></textarea></div>
+                        <div class="flex items-center justify-center"><button class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-full" type="submit">Send Message</button></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="gradient-footer text-white py-8">
+        <div class="container mx-auto px-6 text-center"><p>Connecting families with the resources they need to thrive.</p></div>
+    </footer>
+    <div class="sticky-footer bg-gray-800 text-gray-300 text-sm text-center py-2">&copy; 2025 A Place of Hope. All rights reserved.</div>
+
+    <div id="contact-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-50 flex items-center justify-center px-4">
+        <div id="contact-modal-content" class="bg-white rounded-lg shadow-2xl p-8 w-11/12 md:w-3/4 lg:w-2/3 max-w-4xl transform transition-all opacity-0 -translate-y-4">
+            <div class="flex justify-between items-center mb-6"><h2 class="text-3xl font-bold text-gray-800">Contact Us</h2><button id="close-modal-btn" class="text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button></div>
+            <div id="success-message" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"><strong>Thank you!</strong> Your message has been sent successfully.</div>
+            <form id="contact-modal-form" class="space-y-6">
+                <div><label for="enquiry-direction" class="block text-sm font-medium text-gray-700">Help us direct your enquiry</label><select id="enquiry-direction" name="enquiryDirection" class="mt-1 block w-full p-2 border"><option>General Enquiry</option><option>Make a Referral</option></select></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div><label for="first-name" class="block text-sm font-medium text-gray-700">First Name</label><input type="text" id="first-name" name="firstName" class="mt-1 block w-full p-2 border"></div>
+                    <div><label for="last-name" class="block text-sm font-medium text-gray-700">Last Name</label><input type="text" id="last-name" name="lastName" class="mt-1 block w-full p-2 border"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                     <div><label for="modal-email" class="block text-sm font-medium text-gray-700">Email ID <span class="text-red-500">*</span></label><input type="email" id="modal-email" name="email" class="mt-1 block w-full p-2 border" required></div>
+                    <div><label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label><input type="tel" id="phone" name="phone" class="mt-1 block w-full p-2 border"></div>
+                </div>
+                <div><label for="enquiry-type" class="block text-sm font-medium text-gray-700">Enquiry Type</label><select id="enquiry-type" name="enquiryType" class="mt-1 block w-full p-2 border"><option>General</option><option>Safeguarding</option><option>Recruitment</option></select></div>
+                <div><label for="modal-details" class="block text-sm font-medium text-gray-700">Details</label><textarea id="modal-details" name="details" rows="6" class="mt-1 block w-full p-2 border"></textarea></div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Would you like to opt-in to our quarterly newsletter?</label>
+                    <div class="mt-2 flex items-center space-x-6"><label class="inline-flex items-center"><input type="radio" name="newsletter" value="Yes" class="form-radio"> <span class="ml-2">Yes</span></label><label class="inline-flex items-center"><input type="radio" name="newsletter" value="No" class="form-radio" checked> <span class="ml-2">No</span></label></div>
+                </div>
+                <div class="text-right"><button type="submit" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-md">Submit Enquiry</button></div>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="contact-modal.js"></script>
+</body>
+</html>
+
