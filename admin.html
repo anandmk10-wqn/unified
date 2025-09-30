@@ -26,6 +26,7 @@
                 <a href="#" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="inquiries">Inquiries</a>
                 <a href="#" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="referrals">Referrals</a>
                 <a href="#" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="policies">Policies</a>
+                <a href="#" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="testimonials">Testimonials</a>
                 <a href="#" class="tab-link whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" data-tab="navigation">Navigation</a>
             </nav>
         </div>
@@ -79,6 +80,32 @@
                     <div class="bg-white shadow-md rounded-lg p-6 overflow-x-auto">
                         <p id="policies-loading-message">Loading policies...</p>
                         <div id="policies-table-container"></div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="tab-testimonials" class="tab-panel hidden">
+                <section>
+                    <h2 class="text-2xl font-bold mb-4 text-gray-800">Manage Testimonials</h2>
+                    <form id="testimonial-form" class="bg-white shadow-md rounded-lg p-6 mb-8 space-y-4">
+                        <h3 class="text-xl font-bold" id="testimonial-form-title">Add New Testimonial</h3>
+                        <input type="hidden" id="testimonial-id">
+                        <div>
+                            <label for="testimonial-title" class="block text-sm font-medium text-gray-700">Title (Short Quote)</label>
+                            <input type="text" id="testimonial-title" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., A true lifeline..." required>
+                        </div>
+                        <div>
+                            <label for="testimonial-body" class="block text-sm font-medium text-gray-700">Full Testimonial</label>
+                            <textarea id="testimonial-body" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required></textarea>
+                        </div>
+                        <div class="flex justify-end space-x-2">
+                            <button id="cancel-testimonial-edit-btn" type="button" class="hidden bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md">Cancel</button>
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">Save Testimonial</button>
+                        </div>
+                    </form>
+                    <div class="bg-white shadow-md rounded-lg p-6 overflow-x-auto">
+                        <p id="testimonials-loading-message">Loading testimonials...</p>
+                        <div id="testimonials-table-container"></div>
                     </div>
                 </section>
             </div>

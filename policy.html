@@ -42,6 +42,21 @@
             border: 1px solid #cbd5e0;
             padding: 0.5rem 1rem;
         }
+
+        /* Footer Styles from index.html */
+        #footer-wrapper {
+            background-image: linear-gradient(135deg, #a8e063 0%, #56ab2f 25%, #ff8c00 50%, #87ceeb 75%, #00008b 100%);
+            clip-path: polygon(0 0, 50% 15%, 100% 0, 100% 100%, 0 100%);
+        }
+        .copyright-strip {
+            position: sticky; bottom: 0; background-color: rgba(0, 0, 0, 0.2); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 40;
+        }
+        .footer-menu-button {
+            position: relative; padding: 1rem 1.5rem; color: white; font-weight: bold; text-decoration: none; transition: transform 0.2s; background-color: rgba(255, 255, 255, 0.15); border-top-left-radius: 10px; border-top-right-radius: 10px;
+        }
+        .footer-menu-button:hover {
+            transform: translateY(-2px); background-color: rgba(255, 255, 255, 0.25);
+        }
     </style>
 </head>
 <body class="geometric-background text-gray-800 font-sans">

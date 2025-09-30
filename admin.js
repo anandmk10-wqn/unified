@@ -17,11 +17,14 @@ const dom = {
     // Tab-specific containers
     blocksContainer: document.getElementById('blocks-container'),
     policiesTableContainer: document.getElementById('policies-table-container'),
+    testimonialsTableContainer: document.getElementById('testimonials-table-container'),
     navItemsTableContainer: document.getElementById('nav-items-table-container'),
     inquiriesContainer: document.getElementById('inquiries-container'),
-    referralsContainer: document.getElementById('referrals-container'), // NEW
+    referralsContainer: document.getElementById('referrals-container'),
     // Buttons and Forms
     addPolicyBtn: document.getElementById('add-policy-btn'),
+    testimonialForm: document.getElementById('testimonial-form'),
+    cancelTestimonialEditBtn: document.getElementById('cancel-testimonial-edit-btn'),
     navItemForm: document.getElementById('nav-item-form'),
     cancelNavEditBtn: document.getElementById('cancel-nav-edit-btn'),
     // Add Block elements
@@ -37,12 +40,14 @@ function initializeAdminDashboard() {
     // Load data for all tabs
     displayHomePageBlocks();
     displayPolicies();
+    displayTestimonials();
     displayInquiries();
-    displayReferrals(); // NEW
+    displayReferrals();
     displayNavItems();
     // Set initial state
     switchTab('content');
     resetNavForm();
+    resetTestimonialForm();
 }
 
 function attachEventListeners() {
@@ -54,10 +59,13 @@ function attachEventListeners() {
     // Event delegation for dynamically created content
     dom.blocksContainer.addEventListener('click', handleBlockActions);
     dom.policiesTableContainer.addEventListener('click', handlePoliciesTableClick);
+    dom.testimonialsTableContainer.addEventListener('click', handleTestimonialsTableClick);
     dom.navItemsTableContainer.addEventListener('click', handleNavTableClick);
 
     // Static elements
     dom.addPolicyBtn.addEventListener('click', () => openEditModal({ type: 'policy' }));
+    dom.testimonialForm.addEventListener('submit', handleTestimonialFormSubmit);
+    dom.cancelTestimonialEditBtn.addEventListener('click', resetTestimonialForm);
     dom.navItemForm.addEventListener('submit', handleNavFormSubmit);
     dom.cancelNavEditBtn.addEventListener('click', resetNavForm);
 
@@ -95,7 +103,7 @@ async function openEditModal({ type, id = null }) {
         collectionName = 'home_page_blocks';
         if (type === 'hero' || type === 'about') {
             collectionName = 'content';
-            id = 'home_page'; 
+            id = 'home_page';
         }
     }
 
@@ -106,7 +114,7 @@ async function openEditModal({ type, id = null }) {
             data = docSnap.data();
         }
     }
-    
+
     currentEditContext = { type, id, data, collectionName };
     const titleAction = id ? 'Edit' : 'Create New';
     dom.modalTitle.textContent = `${titleAction} ${type.replace(/_/g, ' ')}`;
@@ -246,7 +254,7 @@ async function handleAddBlockClick(e) {
     const q = query(collection(db, "home_page_blocks"), orderBy("order", "desc"));
     const snapshot = await getDocs(q);
     const lastOrder = snapshot.empty ? 0 : snapshot.docs[0].data().order;
-    
+
     const newBlock = { type: type, order: lastOrder + 1, content: {} };
     if (type !== 'hero' && type !== 'about') {
         newBlock.content = { title: `New ${type} Section` };
@@ -398,6 +406,68 @@ async function handlePoliciesTableClick(e) {
         }
     }
 }
+
+// --- TESTIMONIALS ---
+async function displayTestimonials() {
+    const q = query(collection(db, "testimonials"), orderBy("title"));
+    const snapshot = await getDocs(q);
+    const container = dom.testimonialsTableContainer;
+    let tableHTML = `<table class="min-w-full bg-white text-sm"><thead><tr class="text-left"><th class="py-2 px-4 border-b">Title (Short Quote)</th><th class="py-2 px-4 border-b">Full Text</th><th class="py-2 px-4 border-b text-right">Actions</th></tr></thead><tbody>`;
+    if (snapshot.empty) {
+        tableHTML += `<tr><td colspan="3" class="text-center py-4 text-gray-500">No testimonials found.</td></tr>`;
+    } else {
+        snapshot.forEach(doc => {
+            const item = { id: doc.id, ...doc.data() };
+            tableHTML += `<tr><td class="py-2 px-4 border-b">${item.title}</td><td class="py-2 px-4 border-b">${item.body}</td><td class="py-2 px-4 border-b text-right"><button class="edit-testimonial-btn text-blue-600 hover:underline" data-id="${item.id}">Edit</button><button class="delete-testimonial-btn text-red-600 hover:underline ml-4" data-id="${item.id}">Delete</button></td></tr>`;
+        });
+    }
+    container.innerHTML = tableHTML + '</tbody></table>';
+}
+
+function resetTestimonialForm() {
+    dom.testimonialForm.reset();
+    document.getElementById('testimonial-id').value = '';
+    document.getElementById('testimonial-form-title').textContent = 'Add New Testimonial';
+    dom.cancelTestimonialEditBtn.classList.add('hidden');
+}
+
+async function handleTestimonialFormSubmit(e) {
+    e.preventDefault();
+    const testimonialId = document.getElementById('testimonial-id').value;
+    const data = {
+        title: document.getElementById('testimonial-title').value,
+        body: document.getElementById('testimonial-body').value,
+    };
+    const docRef = testimonialId ? doc(db, "testimonials", testimonialId) : doc(collection(db, "testimonials"));
+    await setDoc(docRef, data);
+    resetTestimonialForm();
+    await displayTestimonials();
+}
+
+async function handleTestimonialsTableClick(e) {
+    const target = e.target.closest('button');
+    if (!target) return;
+    const id = target.dataset.id;
+    if (target.classList.contains('edit-testimonial-btn')) {
+        const docRef = doc(db, "testimonials", id);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            const item = docSnap.data();
+            document.getElementById('testimonial-id').value = docSnap.id;
+            document.getElementById('testimonial-title').value = item.title;
+            document.getElementById('testimonial-body').value = item.body;
+            document.getElementById('testimonial-form-title').textContent = 'Edit Testimonial';
+            dom.cancelTestimonialEditBtn.classList.remove('hidden');
+        }
+    }
+    if (target.classList.contains('delete-testimonial-btn')) {
+        if (confirm('Are you sure you want to delete this testimonial?')) {
+            await deleteDoc(doc(db, "testimonials", id));
+            await displayTestimonials();
+        }
+    }
+}
+
 
 // --- NAVIGATION ---
 async function displayNavItems() {

@@ -1,48 +1,77 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const testimonials = {
-        1: {
-            title: "A true lifeline...",
-            body: "Unified Needs has been a true lifeline for our family. Before we found them, we were struggling to get the right support for our daughter. Their team is so compassionate and knowledgeable, and they've helped us navigate a really challenging time. We're so grateful for everything they've done."
-        },
-        2: {
-            title: "Patient and understanding...",
-            body: "The mentors at Unified Needs are incredibly patient and understanding. They took the time to get to know our son and his unique needs, and they've been able to connect with him in a way that no one else has. He's made so much progress since he started working with them."
-        },
-        3: {
-            title: "Our son is thriving...",
-            body: "We were so worried about our son's future, but now we're filled with hope. He's thriving in the supportive environment at Unified Needs, and he's excited about learning again. We can't thank them enough for giving him this opportunity."
-        },
-        4: {
-            title: "Finally, a place that gets it.",
-            body: "For years, we felt like we were on our own. Unified Needs is the first place we've found that truly 'gets it.' They understand the challenges that families like ours face, and they're committed to making a real difference. We feel so lucky to have found them."
-        },
-        5: {
-            title: "Incredible support...",
-            body: "The support we've received from Unified Needs has been incredible. They've not only helped our child, but they've also provided us with the resources and guidance we need to be better advocates for him. We're so grateful for their partnership."
-        }
-    };
+import { db } from './firebase.js';
+import { collection, query, orderBy, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-    const testimonialItems = document.querySelectorAll('.testimonial-item');
+document.addEventListener('DOMContentLoaded', () => {
+    const testimonialTrack = document.querySelector('.testimonial-track');
     const modal = document.getElementById('testimonial-modal');
     const modalBody = document.getElementById('testimonial-modal-body');
     const closeModalBtn = document.getElementById('close-testimonial-modal-btn');
 
-    testimonialItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const testimonialId = item.dataset.testimonial;
-            const testimonial = testimonials[testimonialId];
-            modalBody.innerHTML = `<h3 class="text-2xl font-bold mb-4">${testimonial.title}</h3><p>${testimonial.body}</p>`;
-            modal.classList.remove('hidden');
-        });
-    });
+    async function loadTestimonials() {
+        if (!testimonialTrack) return;
 
-    closeModalBtn.addEventListener('click', () => {
-        modal.classList.add('hidden');
-    });
+        try {
+            const testimonialsQuery = query(collection(db, "testimonials"), orderBy("title"));
+            const snapshot = await getDocs(testimonialsQuery);
 
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.add('hidden');
+            if (snapshot.empty) {
+                testimonialTrack.innerHTML = '<p class="text-gray-500">No testimonials available.</p>';
+                return;
+            }
+
+            let testimonialsHTML = '';
+            const testimonialsData = [];
+
+            snapshot.forEach(doc => {
+                const testimonial = { id: doc.id, ...doc.data() };
+                testimonialsData.push(testimonial);
+                testimonialsHTML += `
+                    <div class="testimonial-item" data-id="${testimonial.id}">
+                        <h3>"${testimonial.title}"</h3>
+                    </div>
+                `;
+            });
+
+            // Duplicate for seamless scrolling effect
+            testimonialTrack.innerHTML = testimonialsHTML + testimonialsHTML;
+
+        } catch (error) {
+            console.error("Error loading testimonials:", error);
+            testimonialTrack.innerHTML = '<p class="text-red-500">Could not load testimonials.</p>';
+        }
+    }
+
+    testimonialTrack.addEventListener('click', async (e) => {
+        const item = e.target.closest('.testimonial-item');
+        if (item) {
+            const testimonialId = item.dataset.id;
+            try {
+                const docRef = doc(db, "testimonials", testimonialId);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const testimonial = docSnap.data();
+                    modalBody.innerHTML = `<h3 class="text-2xl font-bold mb-4">"${testimonial.title}"</h3><p>${testimonial.body}</p>`;
+                    modal.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error("Error fetching testimonial details:", error);
+            }
         }
     });
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+    }
+
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    }
+
+    loadTestimonials();
 });

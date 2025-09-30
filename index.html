@@ -115,15 +115,17 @@
                 </div>
             </div>
             <div class="absolute inset-0 bg-black opacity-40 z-20"></div>
-            <div class="container mx-auto px-6 text-center relative z-30" style="height: 100%; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 30vh;">
-                <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold leading-tight mb-4 text-white text-glow">
-                    <span class="hero-title-color"></span>
-                    <span class="text-teal-700"></span>
-                </h1>
-                <p id="hero-subtitle" class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto text-glow hero-subtitle-bg"></p>
-                <div class="flex justify-center gap-4">
-                    <a href="#" class="open-referral-modal bg-[rgb(157,234,94)] hover:bg-[rgb(130,200,70)] text-white font-bold py-3 px-8 rounded-full text-lg">Make a Referral</a>
-                    <a href="#" class="open-modal bg-slate-600 hover:bg-slate-700 text-white font-bold py-3 px-8 rounded-full text-lg">Contact Us</a>
+            <div class="absolute inset-0 z-30 flex flex-col items-center justify-center text-center">
+                <div class="container mx-auto px-6">
+                    <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold leading-tight mb-4 text-white text-glow">
+                        <span class="hero-title-color"></span>
+                        <span class="text-teal-700"></span>
+                    </h1>
+                    <p id="hero-subtitle" class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto text-glow hero-subtitle-bg"></p>
+                    <div class="flex justify-center gap-4">
+                        <a href="#" class="open-referral-modal bg-[rgb(157,234,94)] hover:bg-[rgb(130,200,70)] text-white font-bold py-3 px-8 rounded-full text-lg">Make a Referral</a>
+                        <a href="#" class="open-modal bg-slate-600 hover:bg-slate-700 text-white font-bold py-3 px-8 rounded-full text-lg">Contact Us</a>
+                    </div>
                 </div>
             </div>
         </main>
@@ -238,17 +240,19 @@
                     <img src="./static/images/carer12.jpg" alt="A child learning."><img src="./static/images/carer10.jpg" alt="Hands held in support."><img src="./static/images/carer8.jpg" alt="A serene landscape."><img src="./static/images/carer6.jpg" alt="Children playing."><img src="./static/images/carer4.jpg" alt="A smiling face."><img src="./static/images/care3.jpg" alt="Abstract representing creativity.">
                 </div>
             </div>
-            <div class="container mx-auto px-6 text-center" style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
-                <ul class="list-disc list-inside text-lg md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto text-glow hero-subtitle-bg text-left">
-                    <li>Tailored learning to match each child’s individual needs.</li>
-                    <li>Strong safeguarding policies and trained staff.</li>
-                    <li>Flexible placements — no EHCP required to start.</li>
-                    <li>Balance of academic, emotional, and practical support.</li>
-                    <li>Focus on confidence, resilience, and independence.</li>
-                </ul>
-                <p class="text-lg md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto text-glow hero-subtitle-bg">At 'Unified Needs', We envision a future where families of children with special needs are fully integrated and supported within their communities. A future where access to resources is simple, stigmas are eliminated, and hope is a constant companion for every caregiver.</p>
-                <div class="flex justify-center gap-6">
-                    <a href="#" class="open-referral-modal bg-[rgb(157,234,94)] hover:bg-[rgb(130,200,70)] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400">Make a Referral</a>
+            <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center">
+                <div class="container mx-auto px-6">
+                    <ul class="list-disc list-inside text-lg md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto text-glow hero-subtitle-bg text-left">
+                        <li>Tailored learning to match each child’s individual needs.</li>
+                        <li>Strong safeguarding policies and trained staff.</li>
+                        <li>Flexible placements — no EHCP required to start.</li>
+                        <li>Balance of academic, emotional, and practical support.</li>
+                        <li>Focus on confidence, resilience, and independence.</li>
+                    </ul>
+                    <p class="text-lg md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto text-glow hero-subtitle-bg">At 'Unified Needs', We envision a future where families of children with special needs are fully integrated and supported within their communities. A future where access to resources is simple, stigmas are eliminated, and hope is a constant companion for every caregiver.</p>
+                    <div class="flex justify-center gap-6">
+                        <a href="#" class="open-referral-modal bg-[rgb(157,234,94)] hover:bg-[rgb(130,200,70)] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400">Make a Referral</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -397,6 +401,6 @@
     <script type="module" src="app.js"></script>
     <script type="module" src="contact-modal.js"></script>
     <script type="module" src="referral-modal.js"></script>
-    <script src="testimonial.js"></script>
+    <script type="module" src="testimonial.js"></script>
 </body>
 </html>
