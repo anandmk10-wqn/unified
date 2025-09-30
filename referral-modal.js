@@ -41,7 +41,7 @@ async function handleReferralFormSubmit(event) {
         const referralData = {
             referrerName: formData.get('referrerName'),
             referrerEmail: formData.get('referrerEmail'),
-            referrerPhone: formData.get('referrerPhone'),
+            referrerPhone: formData.get('referrerPhone'), // Capturing the new phone field
             referrerRelationship: formData.get('referrerRelationship'),
             childName: formData.get('childName'),
             childAge: formData.get('childAge'),

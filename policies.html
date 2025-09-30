@@ -25,21 +25,6 @@
         #policy-modal-content .prose ul, #policy-modal-content .prose ol { padding-left: 1.5rem; }
         #policy-modal-content .prose table { width: 100%; border-collapse: collapse; }
         #policy-modal-content .prose th, #policy-modal-content .prose td { border: 1px solid #cbd5e0; padding: 0.5rem 1rem; }
-
-        /* Footer Styles from index.html */
-        #footer-wrapper {
-            background-image: linear-gradient(135deg, #a8e063 0%, #56ab2f 25%, #ff8c00 50%, #87ceeb 75%, #00008b 100%);
-            clip-path: polygon(0 0, 50% 15%, 100% 0, 100% 100%, 0 100%);
-        }
-        .copyright-strip {
-            position: sticky; bottom: 0; background-color: rgba(0, 0, 0, 0.2); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 40;
-        }
-        .footer-menu-button {
-            position: relative; padding: 1rem 1.5rem; color: white; font-weight: bold; text-decoration: none; transition: transform 0.2s; background-color: rgba(255, 255, 255, 0.15); border-top-left-radius: 10px; border-top-right-radius: 10px;
-        }
-        .footer-menu-button:hover {
-            transform: translateY(-2px); background-color: rgba(255, 255, 255, 0.25);
-        }
     </style>
 </head>
 <body class="geometric-background text-gray-800 font-sans">
@@ -84,7 +69,6 @@
         <!-- Policy Index Section with Frosted Glow -->
         <section class="mb-12">
             <div class="hero-subtitle-bg text-center">
-                <p class="mb-6 text-lg text-gray-700 text-justify">At Unified Needs, safeguarding and quality are at the centre of everything we do. All of our policies are written in line with local authority requirements and the Department for Education’s Alternative Provision standards, ensuring that children and young people are safe, supported and able to thrive.</p>
                 <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 text-glow">Our Policies</h1>
                 <p class="mt-4 text-lg text-gray-700">Select a policy from the index below to view its full content.</p>
                 <div id="policy-index-container" class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-left">
@@ -108,40 +92,11 @@
     </div>
 
 
-    <div id="footer-wrapper" class="relative" style="margin-top: 2rem; padding-top: 150px;">
-        <footer class="text-white">
-            <div class="container mx-auto px-6 text-center">
-                <nav class="flex justify-center items-end space-x-2">
-                    <div id="footer-nav-links" class="flex justify-center items-end space-x-2">
-                        <a href="index.html" class="footer-menu-button">Home</a>
-                        <a href="index.html#about-us-detailed" class="footer-menu-button">About</a>
-                        <a href="index.html#services" class="footer-menu-button">Services</a>
-                        <a href="index.html#contact" class="footer-menu-button">Contact</a>
-                    </div>
-                </nav>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start pt-12 pb-12">
-                    <div class="text-center">
-                        <h3 class="text-xl font-bold mb-2">Make a Referral</h3>
-                        <p class="mb-4 text-gray-300">Help a child get the support they need.</p>
-                        <a href="#" class="open-referral-modal inline-block bg-white text-blue-900 font-bold py-2 px-6 rounded-full transition hover:bg-gray-200">Refer Now</a>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-xl font-bold mb-2">Book an Appointment</h3>
-                        <p class="mb-4 text-gray-300">Schedule a consultation with our team.</p>
-                        <a href="#" class="open-modal inline-block bg-white text-green-900 font-bold py-2 px-6 rounded-full transition hover:bg-gray-200">Book Now</a>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-xl font-bold mb-2">Get In Touch</h3>
-                        <p class="text-gray-300"><strong>support@unifiedneeds.co.uk</strong></p><p class="text-gray-300"><strong>(+44) 1234 567890</strong></p><p><strong>12-14 Fitzroy ST CB1 1EW</strong></p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <div class="copyright-strip text-gray-200 text-sm text-center py-4">
-            <p>&copy; 2025 Unified Needs - A Place of Hope. All rights reserved.</p>
-            <p class="mt-2">Unified Needs – Alternative Provision in Cambridgeshire, supporting children and young people aged 6–18 to re-engage, rebuild confidence and prepare for reintegration.</p>
-        </div>
-    </div>
+    <!-- Footer (Consistent with index.html) -->
+    <footer class="gradient-footer text-white py-8">
+        <div class="container mx-auto px-6 text-center"><p>Connecting families with the resources they need to thrive.</p></div>
+    </footer>
+    <div class="sticky-footer bg-gray-800 text-gray-300 text-sm text-center py-2">&copy; 2025 A Place of Hope. All rights reserved.</div>
 
     <!-- Scripts -->
     <script type="module" src="policy-viewer.js"></script>

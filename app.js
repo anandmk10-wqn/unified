@@ -44,6 +44,7 @@ async function loadLegacyContent() {
             const data = docSnap.data();
             const heroTitle = document.getElementById('hero-title');
             if (heroTitle) {
+                // This will now correctly find the spans and fill them with your Firebase data
                 heroTitle.querySelector('.hero-title-color').textContent = data.hero_title_part1 || 'Alternative Provision where';
                 heroTitle.querySelector('.text-teal-700').textContent = data.hero_title_part2 || 'children are supported to learn, grow and thrive.';
             }

@@ -3,6 +3,7 @@
 body {
     background-color: #ffffff;
     position: relative;
+    padding-bottom: 3rem; /* Space for the sticky footer */
 }
 
 body::before {
