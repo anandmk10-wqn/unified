@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // These collections are public-facing and can be read by anyone.
+    // Only authenticated admins can write to them.
+    match /home_page_blocks/{document=} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /navigation/{document=} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    match /policies/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // NEW RULE: Add this block to allow reading the old content structure
+    match /content/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Contact form submissions (inquiries) can be created by anyone,
+    // but can only be read, updated, or deleted by authenticated admins.
+    match /inquiries/{document=**} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // Referral form submissions can be created by anyone,
+    // but can only be read, updated, or deleted by authenticated admins.
+    match /referrals/{document=**} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+  }
+}

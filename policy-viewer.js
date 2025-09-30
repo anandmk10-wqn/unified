@@ -50,14 +50,18 @@ async function showPolicyInModal(policyId) {
 
         if (docSnap.exists()) {
             const policy = docSnap.data();
-            policyModalTitle.textContent = policy.title;
 
-            // --- THIS IS THE NEW CODE ---
-            // Create the HTML for the logo and prepend it to the policy content.
-            // The `float-right` class aligns it to the right, and margins add spacing.
-            const logoHTML = `<img src="static/images/unified-logo.png" alt="Unified Needs Logo" class="float-right ml-6 mb-4 w-32 h-auto">`;
-            policyModalContent.innerHTML = logoHTML + policy.content;
-            // --- END OF NEW CODE ---
+            const headerHTML = `
+                <div class="flex items-center">
+                    <img src="static/images/unified-logo.png" alt="Unified Needs Logo" class="h-12 mr-4">
+                    <div>
+                        <span class="text-xl font-bold text-gray-800 block">Unified Needs</span>
+                        <span class="text-lg text-gray-600">${policy.title}</span>
+                    </div>
+                </div>
+            `;
+            policyModalTitle.innerHTML = headerHTML;
+            policyModalContent.innerHTML = policy.content;
             
             document.title = `${policy.title} - Unified Needs`; // Update page title
         } else {
